@@ -54,6 +54,7 @@ namespace ConnectFour
 
     public class GamePlay : ConnectFourGame
     {
+        public bool winner;
         public void ModifyArray(int[] spacePicked, string turn)
         {
             gameBoard[spacePicked[0], spacePicked[1]] = turn;
@@ -188,27 +189,98 @@ namespace ConnectFour
         }
 
     }
-
+    //------------------------------------------------------------
     public class Player : GamePlay
     {
         public bool leaveLoop = false;
         public int turnCounter = 0;
         public bool winner;
+        public GamePlay game = new GamePlay();
+        public bool isValidCoord = false;
         public Player()
         {
 
         }
+        public bool IsValidSpace(int[] validcoord) 
+        {
+            if (base.IsSpaceAvailable(validcoord) && base.GravityChecker(validcoord))
+            { return true;
+            } return false;
+        }
+
+        public virtual void CheckingForWinner()
+        {
+            
+        }
 
     }
+    //-------------------------------------------------------------------------
 
-    public class Human : Player
+    public class Human : GamePlay
     {
-        public string name;
+        int[] coordinate = null;
+        public void HumanPlayer()
+        {
+            bool isValidCoord = false;
+            do
+            {
+                Console.Write("\nChoose a space: ");
+                string spacePicked = Console.ReadLine();
+                spacePicked = spacePicked.ToUpper();
+
+                
+                coordinate = base.CoordinateParser(spacePicked);
+
+                if (base.IsSpaceAvailable(coordinate) && base.GravityChecker(coordinate))
+                {
+                    base.ModifyArray(coordinate, "X");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Not a valid coordinate. Please try again.");
+                }
+            } while (!isValidCoord);
+            
+            
+
+        }
+
+        public void CheckingForWinner()
+        {
+            winner = base.CheckForWinner("X");
+            //turnCounter++;
+        }
     }
 
-    public class Computer : Player
+    public class Computer : GamePlay
     {
+        string cpuChoice = "";
+        int[] cpuCoordinate = null;
+        //public string[] possibleLetters = { "A", "B", "C", "D", "E", "F", "G" }; //??????
+        public void pcPlayer()
+        {
+            bool isValidCoord = false;
+            do
+            {
+                cpuChoice = base.possibleLetters[new Random().Next(base.possibleLetters.Length)] + (new Random().Next(6)); //RANDON GENERATOR IS HERE!!!!!
+                cpuCoordinate = base.CoordinateParser(cpuChoice);
 
+                if (base.IsSpaceAvailable(cpuCoordinate) && base.GravityChecker(cpuCoordinate))
+                {
+                    base.ModifyArray(cpuCoordinate, "X");
+                    break;
+                }
+
+            } while (!isValidCoord);
+
+            base.ModifyArray(cpuCoordinate, "O");
+        }
+        public void CheckingForWinner()
+        {
+            winner = base.CheckForWinner("O");
+            //turnCounter++;
+        }
     }
 
 
@@ -216,8 +288,44 @@ namespace ConnectFour
 
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) //STILL NEEDS TO GIVE THE OPTION TO PLAY AGAINST ANOTHER PLAYER BETTER.
         {
+
+            ConnectFourGame game = new ConnectFourGame();
+            ConnectFourGame Gameplay = new GamePlay();
+            Gameplay.InitializeGameBoard();
+            Gameplay.PrintGameBoard();
+
+            Human humanPlayer = new Human();
+            Computer computerPlayer = new Computer();
+
+            while (true)
+            {
+                // Human's turn
+                humanPlayer.HumanPlayer();
+                humanPlayer.CheckingForWinner();
+                Gameplay.PrintGameBoard();
+                if (humanPlayer.winner)
+                    break;
+
+                // Computer's turn
+                computerPlayer.pcPlayer();
+                computerPlayer.CheckingForWinner();
+                Gameplay.PrintGameBoard();
+                if (computerPlayer.winner)
+                    break;
+            }
+
+            Console.WriteLine("Game Over");
+            Console.ReadLine();
+
+
+
+
+
+
+
+            /*
             Console.WriteLine("Welcome to Connect Four");
             Console.WriteLine("-----------------------");
             ConnectFourGame connectFourGame = new ConnectFourGame();
@@ -225,7 +333,7 @@ namespace ConnectFour
 
             bool leaveLoop = false;
             int turnCounter = 0;
-            bool winner;
+            //bool winner;
 
             while (!leaveLoop)
             {
@@ -260,8 +368,8 @@ namespace ConnectFour
                     }
 
                     winner = Gameplay.CheckForWinner("O");
-                    turnCounter++;*/
-                }
+                    turnCounter++;
+        }
                 else
                 {
                     while (true)
@@ -289,7 +397,7 @@ namespace ConnectFour
                 }
             }
 
-
+            */
         }
     }
 }

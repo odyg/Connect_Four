@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Connect_Four"
   ],
+  "SelectedNode": "\\Connect_Four\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
