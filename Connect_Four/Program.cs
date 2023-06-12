@@ -55,9 +55,10 @@ namespace ConnectFour
     public class GamePlay : ConnectFourGame
     {
         public bool winner;
-        public void ModifyArray(int[] spacePicked, string turn)
+        public void ChangeBoard(int[] spacePicked, string turn)
         {
             gameBoard[spacePicked[0], spacePicked[1]] = turn;
+            base.PrintGameBoard();
 
         }
         public bool CheckForWinner(string chip)
@@ -158,9 +159,9 @@ namespace ConnectFour
 
             return coordinate; // C5 will become 52 or row 5, column 2 
         }
-        public bool IsSpaceAvailable(int[] intendedCoordinate)
+        public bool IsSpaceAvailable(int[] intendedCoord)
         {
-            if (gameBoard[intendedCoordinate[0], intendedCoordinate[1]] == "X" || gameBoard[intendedCoordinate[0], intendedCoordinate[1]] == "O")
+            if (gameBoard[intendedCoord[0], intendedCoord[1]] == "X" || gameBoard[intendedCoord[0], intendedCoord[1]] == "O")
             {
                 return false;
             }
@@ -169,11 +170,11 @@ namespace ConnectFour
                 return true;
             }
         }
-        public bool GravityChecker(int[] intendedCoordinate)
+        public bool GravityChecker(int[] intendedCoord)
         {
             int[] spaceBelow = new int[2];
-            spaceBelow[0] = intendedCoordinate[0] + 1;
-            spaceBelow[1] = intendedCoordinate[1];
+            spaceBelow[0] = intendedCoord[0] + 1;
+            spaceBelow[1] = intendedCoord[1];
 
             if (spaceBelow[0] == 6)
             {
@@ -189,32 +190,7 @@ namespace ConnectFour
         }
 
     }
-    //------------------------------------------------------------
-    public class Player : GamePlay
-    {
-        public bool leaveLoop = false;
-        public int turnCounter = 0;
-        public bool winner;
-        public GamePlay game = new GamePlay();
-        public bool isValidCoord = false;
-        public Player()
-        {
-
-        }
-        public bool IsValidSpace(int[] validcoord) 
-        {
-            if (base.IsSpaceAvailable(validcoord) && base.GravityChecker(validcoord))
-            { return true;
-            } return false;
-        }
-
-        public virtual void CheckingForWinner()
-        {
-            
-        }
-
-    }
-    //-------------------------------------------------------------------------
+  
 
     public class Human : GamePlay
     {
@@ -228,28 +204,32 @@ namespace ConnectFour
                 string spacePicked = Console.ReadLine();
                 spacePicked = spacePicked.ToUpper();
 
-                
                 coordinate = base.CoordinateParser(spacePicked);
+                try
+                {
+                    if (base.IsSpaceAvailable(coordinate) && base.GravityChecker(coordinate))
+                    {
+                        base.ChangeBoard(coordinate, "X");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not a valid coordinate. Please try again.");
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Error occurred. Please try again.");
+                }
 
-                if (base.IsSpaceAvailable(coordinate) && base.GravityChecker(coordinate))
-                {
-                    base.ModifyArray(coordinate, "X");
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Not a valid coordinate. Please try again.");
-                }
             } while (!isValidCoord);
             
-            
-
         }
 
         public void CheckingForWinner()
         {
             winner = base.CheckForWinner("X");
-            //turnCounter++;
+            
         }
     }
 
@@ -257,7 +237,7 @@ namespace ConnectFour
     {
         string cpuChoice = "";
         int[] cpuCoordinate = null;
-        //public string[] possibleLetters = { "A", "B", "C", "D", "E", "F", "G" }; //??????
+        
         public void pcPlayer()
         {
             bool isValidCoord = false;
@@ -268,28 +248,25 @@ namespace ConnectFour
 
                 if (base.IsSpaceAvailable(cpuCoordinate) && base.GravityChecker(cpuCoordinate))
                 {
-                    base.ModifyArray(cpuCoordinate, "X");
+                    base.ChangeBoard(cpuCoordinate, "0");
                     break;
                 }
 
             } while (!isValidCoord);
 
-            base.ModifyArray(cpuCoordinate, "O");
         }
         public void CheckingForWinner()
         {
             winner = base.CheckForWinner("O");
-            //turnCounter++;
         }
     }
-
-
-
 
     internal class Program
     {
         static void Main(string[] args) //STILL NEEDS TO GIVE THE OPTION TO PLAY AGAINST ANOTHER PLAYER BETTER.
         {
+            Console.WriteLine("Welcome to Connect Four");
+            Console.WriteLine("-----------------------");
 
             ConnectFourGame game = new ConnectFourGame();
             ConnectFourGame Gameplay = new GamePlay();
@@ -304,16 +281,17 @@ namespace ConnectFour
                 // Human's turn
                 humanPlayer.HumanPlayer();
                 humanPlayer.CheckingForWinner();
-                Gameplay.PrintGameBoard();
+                //Gameplay.PrintGameBoard();
                 if (humanPlayer.winner)
                     break;
 
                 // Computer's turn
                 computerPlayer.pcPlayer();
                 computerPlayer.CheckingForWinner();
-                Gameplay.PrintGameBoard();
+                //Gameplay.PrintGameBoard();
                 if (computerPlayer.winner)
                     break;
+                
             }
 
             Console.WriteLine("Game Over");
@@ -369,7 +347,7 @@ namespace ConnectFour
 
                     winner = Gameplay.CheckForWinner("O");
                     turnCounter++;
-        }
+                    }
                 else
                 {
                     while (true)
