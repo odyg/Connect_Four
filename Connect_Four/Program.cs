@@ -48,18 +48,18 @@ namespace ConnectFour
             }
             Console.WriteLine("\n   +---+----+----+----+----+----+----+");
         }
-
-
+ 
     }//---------------------------------------------------------------------------------------------
 
     public class GamePlay : ConnectFourGame
     {
         public bool winner;
+        public string Name = null;
+        public string Turn = null;
+
         public void ChangeBoard(int[] spacePicked, string turn)
         {
-            gameBoard[spacePicked[0], spacePicked[1]] = turn;
-            base.PrintGameBoard();
-
+            base.gameBoard[spacePicked[0], spacePicked[1]] = turn;
         }
         public bool CheckForWinner(string chip)
         {
@@ -70,7 +70,7 @@ namespace ConnectFour
                 {
                     if (gameBoard[x, y] == chip && gameBoard[x + 1, y] == chip && gameBoard[x + 2, y] == chip && gameBoard[x + 3, y] == chip)
                     {
-                        Console.WriteLine($"\nGame over {chip} wins! Thank you for playing :)");
+                        Console.WriteLine($"\nGame over {Name} wins! Woot Woot");
                         return true;
                     }
                 }
@@ -84,7 +84,7 @@ namespace ConnectFour
                 {
                     if (gameBoard[x, y] == chip && gameBoard[x, y + 1] == chip && gameBoard[x, y + 2] == chip && gameBoard[x, y + 3] == chip)
                     {
-                        Console.WriteLine($"\nGame over {chip} wins! Thank you for playing :)");
+                        Console.WriteLine($"\nGame over {Name} wins! Get it!");
                         return true;
                     }
                 }
@@ -97,7 +97,7 @@ namespace ConnectFour
                 {
                     if (gameBoard[x, y] == chip && gameBoard[x + 1, y - 1] == chip && gameBoard[x + 2, y - 2] == chip && gameBoard[x + 3, y - 3] == chip)
                     {
-                        Console.WriteLine($"\nGame over {chip} wins! Thank you for playing :)");
+                        Console.WriteLine($"\nGame over {Name} wins! Great job!");
                         return true;
                     }
                 }
@@ -110,7 +110,7 @@ namespace ConnectFour
                 {
                     if (gameBoard[x, y] == chip && gameBoard[x + 1, y + 1] == chip && gameBoard[x + 2, y + 2] == chip && gameBoard[x + 3, y + 3] == chip)
                     {
-                        Console.WriteLine($"\nGame over {chip} wins! Thank you for playing :)");
+                        Console.WriteLine($"\nGame over {Name} wins! {Name} swept the competition.");
                         return true;
                     }
                 }
@@ -195,12 +195,19 @@ namespace ConnectFour
     public class Human : GamePlay
     {
         int[] coordinate = null;
+        
+
+        public Human(string name, string turn)
+        {
+            base.Name = name;
+            base.Turn = turn;
+        }
         public void HumanPlayer()
         {
             bool isValidCoord = false;
             do
             {
-                Console.Write("\nChoose a space: ");
+                Console.Write($"\nChoose a space {Name}: ");
                 string spacePicked = Console.ReadLine();
                 spacePicked = spacePicked.ToUpper();
 
@@ -209,7 +216,7 @@ namespace ConnectFour
                 {
                     if (base.IsSpaceAvailable(coordinate) && base.GravityChecker(coordinate))
                     {
-                        base.ChangeBoard(coordinate, "X");
+                        base.ChangeBoard(coordinate, Turn);
                         break;
                     }
                     else
@@ -228,7 +235,7 @@ namespace ConnectFour
 
         public void CheckingForWinner()
         {
-            winner = base.CheckForWinner("X");
+            winner = base.CheckForWinner(Turn);
             
         }
     }
@@ -253,7 +260,8 @@ namespace ConnectFour
                 }
 
             } while (!isValidCoord);
-
+            
+            base.PrintGameBoard();
         }
         public void CheckingForWinner()
         {
@@ -270,29 +278,71 @@ namespace ConnectFour
 
             ConnectFourGame game = new ConnectFourGame();
             ConnectFourGame Gameplay = new GamePlay();
-            Gameplay.InitializeGameBoard();
-            Gameplay.PrintGameBoard();
+            game.InitializeGameBoard();
+            game.PrintGameBoard();
 
-            Human humanPlayer = new Human();
+
+            //Human humanPlayer = new Human();
             Computer computerPlayer = new Computer();
+            bool looping = false;
 
-            while (true)
+            do
+            {
+                Console.WriteLine("Do you want to play Person vs Person? (Yes/No)");
+                string answer = Console.ReadLine();
+                answer = answer.ToUpper();
+                
+                    if (answer == "YES")
+                    {
+                        Console.WriteLine("Player 1 ('X') name? ");
+                        string player1 = Console.ReadLine();
+                        Console.WriteLine("Player 2 ('O') name? ");
+                        string player2 = Console.ReadLine();
+                        Human Player1 = new Human(player1, "X");
+                        Human Player2 = new Human(player2, "O");
+
+                        while (true)
+                        {
+                            Player1.HumanPlayer();
+                            Player1.CheckingForWinner();
+                            Player1.PrintGameBoard();
+                            if (Player1.winner)
+                                break;
+                            Player2.HumanPlayer();
+                            Player2.CheckingForWinner();
+                            Player2.PrintGameBoard();
+                            if (Player2.winner)
+                                break;
+                        } looping = true;
+                    }
+                    else if (answer == "NO")
+                    {
+                        Console.WriteLine("You're going against a SUPER computer (Player 2 - 'O')");
+                        Console.WriteLine("Player 1 ('X') name? ");
+                        string player1 = Console.ReadLine();
+                    }
+                
+            } while (!looping);
+
+
+
+            /*while (true)
             {
                 // Human's turn
                 humanPlayer.HumanPlayer();
                 humanPlayer.CheckingForWinner();
-                //Gameplay.PrintGameBoard();
+                //humanPlayer.PrintGameBoard();
                 if (humanPlayer.winner)
                     break;
 
                 // Computer's turn
                 computerPlayer.pcPlayer();
                 computerPlayer.CheckingForWinner();
-                //Gameplay.PrintGameBoard();
+                //computerPlayer.PrintGameBoard();
                 if (computerPlayer.winner)
                     break;
                 
-            }
+            }*/
 
             Console.WriteLine("Game Over");
             Console.ReadLine();
