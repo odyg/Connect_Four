@@ -305,7 +305,7 @@ namespace ConnectFour
                         {
                             Player1.HumanPlayer();
                             Player1.CheckingForWinner();
-                            Player1.PrintGameBoard();
+                            Player1.PrintGameBoard(); //I need Player 1 and Player 2 gameboard to merge somehow.
                             if (Player1.winner)
                                 break;
                             Player2.HumanPlayer();

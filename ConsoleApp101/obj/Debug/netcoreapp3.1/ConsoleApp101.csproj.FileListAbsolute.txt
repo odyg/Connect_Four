@@ -1,0 +1,14 @@
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\ConsoleApp101\bin\Debug\netcoreapp3.1\ConsoleApp101.exe
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\ConsoleApp101\bin\Debug\netcoreapp3.1\ConsoleApp101.deps.json
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\ConsoleApp101\bin\Debug\netcoreapp3.1\ConsoleApp101.runtimeconfig.json
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\ConsoleApp101\bin\Debug\netcoreapp3.1\ConsoleApp101.runtimeconfig.dev.json
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\ConsoleApp101\bin\Debug\netcoreapp3.1\ConsoleApp101.dll
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\ConsoleApp101\bin\Debug\netcoreapp3.1\ConsoleApp101.pdb
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\ConsoleApp101\obj\Debug\netcoreapp3.1\ConsoleApp101.csproj.AssemblyReference.cache
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\ConsoleApp101\obj\Debug\netcoreapp3.1\ConsoleApp101.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\ConsoleApp101\obj\Debug\netcoreapp3.1\ConsoleApp101.AssemblyInfoInputs.cache
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\ConsoleApp101\obj\Debug\netcoreapp3.1\ConsoleApp101.AssemblyInfo.cs
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\ConsoleApp101\obj\Debug\netcoreapp3.1\ConsoleApp101.csproj.CoreCompileInputs.cache
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\ConsoleApp101\obj\Debug\netcoreapp3.1\ConsoleApp101.dll
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\ConsoleApp101\obj\Debug\netcoreapp3.1\ConsoleApp101.pdb
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\ConsoleApp101\obj\Debug\netcoreapp3.1\ConsoleApp101.genruntimeconfig.cache
