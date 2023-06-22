@@ -1,0 +1,14 @@
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\Downcast and Inheritance\bin\Debug\netcoreapp3.1\Downcast and Inheritance.exe
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\Downcast and Inheritance\bin\Debug\netcoreapp3.1\Downcast and Inheritance.deps.json
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\Downcast and Inheritance\bin\Debug\netcoreapp3.1\Downcast and Inheritance.runtimeconfig.json
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\Downcast and Inheritance\bin\Debug\netcoreapp3.1\Downcast and Inheritance.runtimeconfig.dev.json
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\Downcast and Inheritance\bin\Debug\netcoreapp3.1\Downcast and Inheritance.dll
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\Downcast and Inheritance\bin\Debug\netcoreapp3.1\Downcast and Inheritance.pdb
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\Downcast and Inheritance\obj\Debug\netcoreapp3.1\Downcast and Inheritance.csproj.AssemblyReference.cache
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\Downcast and Inheritance\obj\Debug\netcoreapp3.1\Downcast and Inheritance.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\Downcast and Inheritance\obj\Debug\netcoreapp3.1\Downcast and Inheritance.AssemblyInfoInputs.cache
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\Downcast and Inheritance\obj\Debug\netcoreapp3.1\Downcast and Inheritance.AssemblyInfo.cs
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\Downcast and Inheritance\obj\Debug\netcoreapp3.1\Downcast and Inheritance.csproj.CoreCompileInputs.cache
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\Downcast and Inheritance\obj\Debug\netcoreapp3.1\Downcast and Inheritance.dll
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\Downcast and Inheritance\obj\Debug\netcoreapp3.1\Downcast and Inheritance.pdb
+C:\Users\odyga\OneDrive\Documents\SODV1202\Connect_Four\Downcast and Inheritance\obj\Debug\netcoreapp3.1\Downcast and Inheritance.genruntimeconfig.cache

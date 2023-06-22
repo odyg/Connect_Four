@@ -1,0 +1,67 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\odyga\\OneDrive\\Documents\\SODV1202\\Connect_Four\\Downcast and polymorphism\\Downcast and polymorphism.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\odyga\\OneDrive\\Documents\\SODV1202\\Connect_Four\\Downcast and polymorphism\\Downcast and polymorphism.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\odyga\\OneDrive\\Documents\\SODV1202\\Connect_Four\\Downcast and polymorphism\\Downcast and polymorphism.csproj",
+        "projectName": "Downcast and polymorphism",
+        "projectPath": "C:\\Users\\odyga\\OneDrive\\Documents\\SODV1202\\Connect_Four\\Downcast and polymorphism\\Downcast and polymorphism.csproj",
+        "packagesPath": "C:\\Users\\odyga\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\odyga\\OneDrive\\Documents\\SODV1202\\Connect_Four\\Downcast and polymorphism\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\odyga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -37,24 +37,7 @@ namespace ConnectFour
             }
         }
 
-        /*public override void PrintGameBoard()
-        {
-            Console.WriteLine();
-            for (int row = rows - 1; row >= 0; row--)
-            {
-                Console.Write("| ");
-                for (int col = 0; col < cols; col++)
-                {
-                    Console.Write(gameBoard[row, col] + " | ");
-                }
-                Console.WriteLine();
-            }
-
-            Console.WriteLine("-----------------------------");
-            Console.WriteLine("  A   B   C   D   E   F   G");
-            Console.WriteLine();
-        }*/
-
+       
         public override void PrintGameBoard()
         {
             Console.WriteLine("\n     A    B    C    D    E    F    G  ");
@@ -81,7 +64,7 @@ namespace ConnectFour
             Console.WriteLine("\n   +---+----+----+----+----+----+----+");
         }
 
-        public override bool IsColumnFull(int col)
+        public override bool IsColumnFull(int col) //This will loop to check the rows. The col will stay the same.
         {
             for (int row = 0; row < rows; row++)
             {
@@ -93,7 +76,7 @@ namespace ConnectFour
             return true;
         }
 
-        public override bool IsGameBoardFull()
+        public override bool IsGameBoardFull() //This will loop to check if all columns are full using IsColumnFull method. 
         {
             for (int col = 0; col < cols; col++)
             {
@@ -119,7 +102,9 @@ namespace ConnectFour
                 return -1;
             }
 
-            int colIndex = Array.IndexOf(possibleLetters, letter);
+            int colIndex = Array.IndexOf(possibleLetters, letter); 
+            //this is where we convert the letter to an int. we are comparing 
+            //the letter to the array of "possibleLetter" if found we get index value
             if (colIndex < 0 || colIndex >= cols || row < 1 || row > rows)
             {
                 return -1;
@@ -191,18 +176,26 @@ namespace ConnectFour
             InitializeGameBoard();
             PrintGameBoard();
 
-            string player = "O";
+            Console.WriteLine("Enter first player name: ");
+            string Player1 = Console.ReadLine();
+            Console.WriteLine("Enter second player name: ");
+            string Player2 = Console.ReadLine();
+
+            string Name = Player1;
+            string player = "X";
             while (true)
             {
-                Console.WriteLine($"\nPlayer {player}'s turn.");
+                Console.WriteLine($"\nPlayer {player}'s turn. ({Name})");
                 Console.Write("Enter the column and row position (e.g., C5): ");
-                string input = Console.ReadLine().Trim().ToUpper();
+                string input = Console.ReadLine().Trim().ToUpper(); //reformat the input
                 Console.WriteLine();
 
-                int colIndex = GetColumnIndex(input);
-                if (colIndex >= 0 && !IsColumnFull(colIndex))
+                int colIndex = GetColumnIndex(input); //This will check the input using this method
+                if (colIndex >= 0 && !IsColumnFull(colIndex)) //if colIndex is -1 from this method GetColumnIndex() it will ask the player to try again. 
                 {
-                    for (int row = rows - 1; row >= 0; row--)
+                    for (int row = rows - 1; row >= 0; row--) /*NOTE: The code is only checking if the row input is out of range. GetColumnIndex() method
+                                                               * If it is, then it will ask the player to try again. If it's within range the code will find the next empty space
+                                                               within that column with this loop. This will improve gameplay and reduce error */
                     {
                         if (gameBoard[row, colIndex] == "")
                         {
@@ -213,7 +206,7 @@ namespace ConnectFour
 
                     PrintGameBoard();
 
-                    if (CheckForWinner(player))
+                    if (CheckForWinner(player)) //we are checking for winners using this method CheckForWinner()
                     {
                         Console.WriteLine($"Player {player} wins!");
                         break;
@@ -225,8 +218,19 @@ namespace ConnectFour
                         break;
                     }
 
-                    player = (player == "O") ? "X" : "O";
+                    if (player == "X")
+                    {
+                        player = "O";
+                        Name = Player2;
+                    }
+                    else
+                    {
+                        player = "X";
+                        Name = Player1;
+                    }
+                    
                 }
+               
                 else
                 {
                     Console.WriteLine("Invalid position. Please try again.");
@@ -269,7 +273,7 @@ namespace ConnectFour
                 switch (choice)
                 {
                     case "1":
-                        Game humanVsHumanGame = new HumanVsHumanGame();
+                        Game humanVsHumanGame = new HumanVsHumanGame();                        
                         humanVsHumanGame.Play();
                         break;
                     case "2":
