@@ -106,7 +106,7 @@ namespace ConnectFour
 
             int colIndex = Array.IndexOf(possibleLetters, letter); //this is where we convert the letter to an int. we are comparing 
             //the letter to the array of "possibleLetter" if found we get index value
-            if (colIndex < 0 || colIndex >= cols || row < 1 || row > rows)
+            if (colIndex < 0 || colIndex >= cols || row < 0 || row > rows)
             {
                 return -1;
             }
@@ -208,7 +208,7 @@ namespace ConnectFour
 
                     if (CheckForWinner(player))
                     {
-                        Console.WriteLine($"Player {Name} ({Name}) wins!");
+                        Console.WriteLine($"Player {player} ({Name}) wins!");
                         break;
                     }
 

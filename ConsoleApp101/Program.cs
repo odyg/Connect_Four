@@ -208,7 +208,7 @@ namespace ConnectFour
 
                     if (CheckForWinner(player)) //we are checking for winners using this method CheckForWinner()
                     {
-                        Console.WriteLine($"Player {player} wins!");
+                        Console.WriteLine($"Player {player} ({Name}) wins!");
                         break;
                     }
 
