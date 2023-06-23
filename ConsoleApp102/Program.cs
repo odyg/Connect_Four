@@ -12,9 +12,9 @@ namespace ConnectFour
         public abstract int GetColumnIndex(string position); // Modified method to accept column and row position
         public abstract bool CheckForWinner(string chip);
         public abstract void Play();
-    }
+}
 
-    public interface IGame //This is for when we want to extend this to have a chess game. We can create anohter class and implement this interface. 
+    public interface IGame
     {
         void InitializeGameBoard();
         void PrintGameBoard();
@@ -27,7 +27,7 @@ namespace ConnectFour
         private const int rows = 6;
         private const int cols = 7;
         private readonly char[] possibleLetters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G' };
-
+        
         public override void InitializeGameBoard()
         {
             gameBoard = new string[rows, cols];
